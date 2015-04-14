@@ -17,9 +17,9 @@ void knockDownTheClapperboards(unsigned char side)
 		
 	}else
 	{
-		AX_SetAngle(60, 180, 1, AX_SERVO2);//izbaci udaraljku sa leve strane
+		AX_SetAngle(160, 180, 1, AX_SERVO3);//izbaci udaraljku sa leve strane
 			_delay_ms(1000);
-		AX_SetAngle(160, 180, 1, AX_SERVO2);//uvuce udaraljku sa leve strane
+		AX_SetAngle(60, 180, 1, AX_SERVO3);//uvuce udaraljku sa leve strane
 			_delay_ms(1000);
 		
 	}
@@ -27,11 +27,11 @@ void knockDownTheClapperboards(unsigned char side)
 
 void colectThePopcorn(unsigned char side)
 {
-	/*if(side == RIGHT_SIDE)
+	if(side == 1)
 	{
-		AX_SetAngle(60, 180, 1, AX_SERVO3);//otvori ruku za uzimanje kokica sa desne strane
+		AX_SetAngle(60, 180, 1, AX_SERVO2);//otvori ruku za uzimanje kokica sa desne strane
 		_delay_ms(1000);
-		AX_SetAngle(160, 180, 1, AX_SERVO3);//zatvori ruku za uzimanje kokica sa desne strane
+		AX_SetAngle(160, 180, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane
 		_delay_ms(1000);	
 		
 	}else
@@ -40,7 +40,7 @@ void colectThePopcorn(unsigned char side)
 		_delay_ms(1000);
 		AX_SetAngle(160, 180, 1, AX_SERVO4);//zatvori ruku za uzimanje kokica sa leve strane
 		_delay_ms(1000);
-	}*/
+	}
 }//END OF colectThePopcorn
 
 void action(canMsg msg)

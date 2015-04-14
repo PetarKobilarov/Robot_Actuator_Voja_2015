@@ -42,8 +42,6 @@ Discarded input sections
  .text          0x00000000        0x0 actuatorFunctions.o
  .data          0x00000000        0x0 actuatorFunctions.o
  .bss           0x00000000        0x0 actuatorFunctions.o
- .text.colectThePopcorn
-                0x00000000        0x0 actuatorFunctions.o
  .text          0x00000000        0x0 can.o
  .data          0x00000000        0x0 can.o
  .bss           0x00000000        0x0 can.o
@@ -150,8 +148,8 @@ LOAD control.o
 LOAD Robot_Actuator_Voja_2015.o
 START GROUP
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a
-LOAD C:\Users\pkobi_000\Desktop\Robotika2015\Robot_Actuator_Voja_2015\Robot_Actuator_Voja_2015\libQEI.a
-LOAD C:\Users\pkobi_000\Desktop\Robotika2015\Robot_Actuator_Voja_2015\Robot_Actuator_Voja_2015\libuart.a
+LOAD C:\Users\pkobi_000\Desktop\Robotika2015\Kodovi\Robot_Actuator_Voja_2015\Robot_Actuator_Voja_2015\libQEI.a
+LOAD C:\Users\pkobi_000\Desktop\Robotika2015\Kodovi\Robot_Actuator_Voja_2015\Robot_Actuator_Voja_2015\libuart.a
 END GROUP
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a
@@ -247,7 +245,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x990
+.text           0x00000000      0xa2a
  *(.vectors)
  .vectors       0x00000000       0x94 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtcan128.o
                 0x00000000                __vectors
@@ -341,92 +339,95 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
                 0x000000ce                __vector_20
                 0x000000d0                . = ALIGN (0x2)
  *(.text.*)
- .text.knockDownTheClapperboards
+ .text.colectThePopcorn
                 0x000000d0       0x90 actuatorFunctions.o
-                0x000000d0                knockDownTheClapperboards
- .text.action   0x00000160       0x4a actuatorFunctions.o
-                0x00000160                action
+                0x000000d0                colectThePopcorn
+ .text.knockDownTheClapperboards
+                0x00000160       0x90 actuatorFunctions.o
+                0x00000160                knockDownTheClapperboards
+ .text.action   0x000001f0       0x54 actuatorFunctions.o
+                0x000001f0                action
  .text.__vector_18
-                0x000001aa      0x156 can.o
-                0x000001aa                __vector_18
+                0x00000244      0x156 can.o
+                0x00000244                __vector_18
  .text.CAN_Init
-                0x00000300      0x11a can.o
-                0x00000300                CAN_Init
+                0x0000039a      0x11a can.o
+                0x0000039a                CAN_Init
  .text.CAN_read
-                0x0000041a       0xa2 can.o
-                0x0000041a                CAN_read
+                0x000004b4       0xa2 can.o
+                0x000004b4                CAN_read
  .text.AX_UART_Init
-                0x000004bc       0x3a control.o
-                0x000004bc                AX_UART_Init
+                0x00000556       0x3a control.o
+                0x00000556                AX_UART_Init
  .text.AX_SendChar
-                0x000004f6       0x12 control.o
-                0x000004f6                AX_SendChar
+                0x00000590       0x12 control.o
+                0x00000590                AX_SendChar
  .text.AX_StopTransmitter
-                0x00000508       0x20 control.o
-                0x00000508                AX_StopTransmitter
+                0x000005a2       0x20 control.o
+                0x000005a2                AX_StopTransmitter
  .text.AX_ReleaseTransmitter
-                0x00000528        0xc control.o
-                0x00000528                AX_ReleaseTransmitter
+                0x000005c2        0xc control.o
+                0x000005c2                AX_ReleaseTransmitter
  .text.AX_StopReceiver
-                0x00000534        0xc control.o
-                0x00000534                AX_StopReceiver
+                0x000005ce        0xc control.o
+                0x000005ce                AX_StopReceiver
  .text.AX_ReleaseReceiver
-                0x00000540        0xc control.o
-                0x00000540                AX_ReleaseReceiver
+                0x000005da        0xc control.o
+                0x000005da                AX_ReleaseReceiver
  .text.AX_SetAngle
-                0x0000054c       0xca control.o
-                0x0000054c                AX_SetAngle
- .text.main     0x00000616       0x6c Robot_Actuator_Voja_2015.o
-                0x00000616                main
+                0x000005e6       0xca control.o
+                0x000005e6                AX_SetAngle
+ .text.main     0x000006b0       0x6c Robot_Actuator_Voja_2015.o
+                0x000006b0                main
  .text.avr-libc.fplib
-                0x00000682        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(divsf3.o)
-                0x00000682                __divsf3
+                0x0000071c        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(divsf3.o)
+                0x0000071c                __divsf3
  .text.avr-libc.fplib
-                0x00000686       0xcc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(divsf3x.o)
-                0x0000069c                __divsf3x
-                0x000006a0                __divsf3_pse
+                0x00000720       0xcc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(divsf3x.o)
+                0x00000736                __divsf3x
+                0x0000073a                __divsf3_pse
  .text.avr-libc.fplib
-                0x00000752       0x58 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fixunssfsi.o)
-                0x00000752                __fixunssfsi
+                0x000007ec       0x58 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fixunssfsi.o)
+                0x000007ec                __fixunssfsi
  .text.avr-libc.fplib
-                0x000007aa       0x7a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(floatsisf.o)
-                0x000007ae                __floatsisf
-                0x000007aa                __floatunsisf
+                0x00000844       0x7a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(floatsisf.o)
+                0x00000848                __floatsisf
+                0x00000844                __floatunsisf
  .text.avr-libc.fplib
-                0x00000824        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_inf.o)
-                0x00000824                __fp_inf
+                0x000008be        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_inf.o)
+                0x000008be                __fp_inf
  .text.avr-libc.fplib
-                0x00000830        0x6 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_nan.o)
-                0x00000830                __fp_nan
+                0x000008ca        0x6 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_nan.o)
+                0x000008ca                __fp_nan
  .text.avr-libc.fplib
-                0x00000836        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_pscA.o)
-                0x00000836                __fp_pscA
+                0x000008d0        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_pscA.o)
+                0x000008d0                __fp_pscA
  .text.avr-libc.fplib
-                0x00000844        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_pscB.o)
-                0x00000844                __fp_pscB
+                0x000008de        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_pscB.o)
+                0x000008de                __fp_pscB
  .text.avr-libc.fplib
-                0x00000852       0x22 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_round.o)
-                0x00000852                __fp_round
+                0x000008ec       0x22 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_round.o)
+                0x000008ec                __fp_round
  .text.avr-libc.fplib
-                0x00000874       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_split3.o)
-                0x00000874                __fp_split3
-                0x00000884                __fp_splitA
+                0x0000090e       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_split3.o)
+                0x0000090e                __fp_split3
+                0x0000091e                __fp_splitA
  .text.avr-libc.fplib
-                0x000008b8        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_zero.o)
-                0x000008b8                __fp_zero
-                0x000008ba                __fp_szero
+                0x00000952        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(fp_zero.o)
+                0x00000952                __fp_zero
+                0x00000954                __fp_szero
  .text.avr-libc.fplib
-                0x000008c6        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(mulsf3.o)
-                0x000008c6                __mulsf3
+                0x00000960        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(mulsf3.o)
+                0x00000960                __mulsf3
  .text.avr-libc.fplib
-                0x000008ca       0xc2 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(mulsf3x.o)
-                0x000008e2                __mulsf3_pse
-                0x000008de                __mulsf3x
-                0x0000098c                . = ALIGN (0x2)
+                0x00000964       0xc2 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a(mulsf3x.o)
+                0x0000097c                __mulsf3_pse
+                0x00000978                __mulsf3x
+                0x00000a26                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000098c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
-                0x0000098c                exit
-                0x0000098c                _exit
+ .fini9         0x00000a26        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+                0x00000a26                exit
+                0x00000a26                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -445,11 +446,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000098c        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .fini0         0x00000a26        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000990                _etext = .
+                0x00000a2a                _etext = .
 
-.data           0x00800100        0x0 load address 0x00000990
+.data           0x00800100        0x0 load address 0x00000a2a
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -473,8 +474,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  .bss.rxBuffer  0x00800103      0x1f4 can.o
  *(COMMON)
                 0x008002f7                PROVIDE (__bss_end, .)
-                0x00000990                __data_load_start = LOADADDR (.data)
-                0x00000990                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000a2a                __data_load_start = LOADADDR (.data)
+                0x00000a2a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008002f7        0x0
                 0x008002f7                PROVIDE (__noinit_start, .)
@@ -555,27 +556,27 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  .debug_pubnames
                 0x000001c0       0x1b Robot_Actuator_Voja_2015.o
 
-.debug_info     0x00000000      0xa5d
+.debug_info     0x00000000      0xb89
  *(.debug_info)
- .debug_info    0x00000000      0x2b6 actuatorFunctions.o
- .debug_info    0x000002b6      0x283 can.o
- .debug_info    0x00000539      0x3b2 control.o
- .debug_info    0x000008eb      0x172 Robot_Actuator_Voja_2015.o
+ .debug_info    0x00000000      0x3e2 actuatorFunctions.o
+ .debug_info    0x000003e2      0x283 can.o
+ .debug_info    0x00000665      0x3b2 control.o
+ .debug_info    0x00000a17      0x172 Robot_Actuator_Voja_2015.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x4fe
+.debug_abbrev   0x00000000      0x4ef
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x156 actuatorFunctions.o
- .debug_abbrev  0x00000156      0x155 can.o
- .debug_abbrev  0x000002ab      0x153 control.o
- .debug_abbrev  0x000003fe      0x100 Robot_Actuator_Voja_2015.o
+ .debug_abbrev  0x00000000      0x147 actuatorFunctions.o
+ .debug_abbrev  0x00000147      0x155 can.o
+ .debug_abbrev  0x0000029c      0x153 control.o
+ .debug_abbrev  0x000003ef      0x100 Robot_Actuator_Voja_2015.o
 
-.debug_line     0x00000000      0xc88
+.debug_line     0x00000000      0xd2f
  *(.debug_line)
- .debug_line    0x00000000      0x1f9 actuatorFunctions.o
- .debug_line    0x000001f9      0x414 can.o
- .debug_line    0x0000060d      0x51d control.o
- .debug_line    0x00000b2a      0x15e Robot_Actuator_Voja_2015.o
+ .debug_line    0x00000000      0x2a0 actuatorFunctions.o
+ .debug_line    0x000002a0      0x414 can.o
+ .debug_line    0x000006b4      0x51d control.o
+ .debug_line    0x00000bd1      0x15e Robot_Actuator_Voja_2015.o
 
 .debug_frame    0x00000000      0x1b0
  *(.debug_frame)
@@ -584,23 +585,23 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  .debug_frame   0x000000b0       0xe0 control.o
  .debug_frame   0x00000190       0x20 Robot_Actuator_Voja_2015.o
 
-.debug_str      0x00000000      0x31e
+.debug_str      0x00000000      0x325
  *(.debug_str)
- .debug_str     0x00000000      0x14d actuatorFunctions.o
-                                0x181 (size before relaxing)
- .debug_str     0x0000014d       0x8b can.o
-                                0x176 (size before relaxing)
- .debug_str     0x000001d8      0x119 control.o
-                                0x234 (size before relaxing)
- .debug_str     0x000002f1       0x2d Robot_Actuator_Voja_2015.o
-                                0x156 (size before relaxing)
+ .debug_str     0x00000000      0x154 actuatorFunctions.o
+                                0x188 (size before relaxing)
+ .debug_str     0x00000154       0x8b can.o
+                                0x17d (size before relaxing)
+ .debug_str     0x000001df      0x119 control.o
+                                0x23b (size before relaxing)
+ .debug_str     0x000002f8       0x2d Robot_Actuator_Voja_2015.o
+                                0x15d (size before relaxing)
 
-.debug_loc      0x00000000      0x37f
+.debug_loc      0x00000000      0x42d
  *(.debug_loc)
- .debug_loc     0x00000000       0xae actuatorFunctions.o
- .debug_loc     0x000000ae       0xcd can.o
- .debug_loc     0x0000017b      0x1d4 control.o
- .debug_loc     0x0000034f       0x30 Robot_Actuator_Voja_2015.o
+ .debug_loc     0x00000000      0x15c actuatorFunctions.o
+ .debug_loc     0x0000015c       0xcd can.o
+ .debug_loc     0x00000229      0x1d4 control.o
+ .debug_loc     0x000003fd       0x30 Robot_Actuator_Voja_2015.o
 
 .debug_macinfo
  *(.debug_macinfo)

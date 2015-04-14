@@ -81,8 +81,8 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 LIB_DEP+=  \
-C:/Users/pkobi_000/Desktop/Robotika2015/Robot_Actuator_Voja_2015/Robot_Actuator_Voja_2015/libQEI.a \
-C:/Users/pkobi_000/Desktop/Robotika2015/Robot_Actuator_Voja_2015/Robot_Actuator_Voja_2015/libuart.a
+C:/Users/pkobi_000/Desktop/Robotika2015/Kodovi/Robot_Actuator_Voja_2015/Robot_Actuator_Voja_2015/libQEI.a \
+C:/Users/pkobi_000/Desktop/Robotika2015/Kodovi/Robot_Actuator_Voja_2015/Robot_Actuator_Voja_2015/libuart.a
 
 # AVR32/GNU C Compiler
 
@@ -126,7 +126,7 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU Linker : 4.3.3
-	$(QUOTE)C:\WinAVR-20100110\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="Robot_Actuator_Voja_2015.map" -Wl,--start-group -Wl,-lm -Wl,-lQEI -Wl,-luart  -Wl,--end-group -Wl,-L"C:\Users\pkobi_000\Desktop\Robotika2015\Robot_Actuator_Voja_2015\Robot_Actuator_Voja_2015"  -Wl,--gc-sections -mrelax -mmcu=at90can128  
+	$(QUOTE)C:\WinAVR-20100110\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="Robot_Actuator_Voja_2015.map" -Wl,--start-group -Wl,-lm -Wl,-lQEI -Wl,-luart  -Wl,--end-group -Wl,-L"C:\Users\pkobi_000\Desktop\Robotika2015\Robot_Actuator_Voja_2015\Robot_Actuator_Voja_2015" -Wl,-L"C:\Users\pkobi_000\Desktop\Robotika2015\Kodovi\Robot_Actuator_Voja_2015\Robot_Actuator_Voja_2015"  -Wl,--gc-sections -mrelax -mmcu=at90can128  
 	@echo Finished building target: $@
 	"C:\WinAVR-20100110\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "Robot_Actuator_Voja_2015.elf" "Robot_Actuator_Voja_2015.hex"
 	"C:\WinAVR-20100110\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "Robot_Actuator_Voja_2015.elf" "Robot_Actuator_Voja_2015.eep" || exit 0

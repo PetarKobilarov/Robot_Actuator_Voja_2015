@@ -6,6 +6,9 @@
 #include "uart.h"
 #include "can.h"
 
+#define ACTIVATE	1
+#define DEACTIVATE	-1
+
 void knockDownTheClapperboards(unsigned char side)
 {
 	if(side == 1)
@@ -43,19 +46,83 @@ void colectThePopcorn(unsigned char side)
 	}
 }//END OF colectThePopcorn
 
+void rightDiafram(unsigned char state)
+{
+	DDRE |= (1 << PINE4);
+	
+	if (state == ACTIVATE)
+	{
+		PORTE |= (1 << PINE4);
+	}else
+	{
+		PORTE &= ~(1 << PINE4);
+	}
+	
+}//END OF valveOnOff
+
+void leftDiafram(unsigned char state)
+{
+	DDRE |= (1 << PINE5);
+	
+	if (state == ACTIVATE)
+	{
+		PORTE |= (1 << PINE5);
+	}else
+	{
+		PORTE &= ~(1 << PINE5);
+	}
+	
+}//END OF valveTwoOnOff
+
+void liftMove(unsigned char state)
+{
+	DDRF |= (1 << PINF7);//CS1
+	DDRF |= (1 << PINF6);//INA1
+	DDRF |= (0 << PINF5);//INB1
+	DDRE |= (1 << PINE3);//PWM1
+	
+	if (state == ACTIVATE)
+	{
+		PORTE |= (1 << PINE3);
+	} 
+	else
+	{
+		PORTE &= ~(1 << PINE3);
+		
+	}
+		
+}//END OF liftOnOff
+
 void action(canMsg msg)
 {
 	unsigned char command = msg.data[0];
-	unsigned char side = msg.data[1];
+	unsigned char side, state;
 	
 	switch(command)
 	{
 		case 'A':
+			side = msg.data[1];
 			knockDownTheClapperboards(side);
 				break;
 				
 		case 'B':
+			side = msg.data[1];
 			colectThePopcorn(side);
+				break;
+				
+		case 'C':
+			state = msg.data[1];
+			leftDiafram(state);
+				break;
+				
+		case 'D':
+			state = msg.data[1];
+			rightDiafram(state);
+				break;
+				
+		case 'E':
+			state = msg.data[1];
+			liftMove(state);
 				break;
 	}
 }

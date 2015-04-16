@@ -12,6 +12,7 @@ int main(void)
 	PORTE &= (~(1 << PINE4));
 	AX_UART_Init();
 	CAN_Init();
+	CAN_InitRxMob(LIFT_IDE);
 	
 	_delay_ms(1000);
 

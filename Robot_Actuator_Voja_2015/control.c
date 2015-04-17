@@ -4,6 +4,7 @@
 #include "uart.h"
 #include "control.h"
 #include "qei.h"
+#include "system.h"
 
 
 #define START	0xFF

@@ -5,14 +5,21 @@
 #include "control.h"
 #include "uart.h"
 #include "can.h"
+#include "system.h"
+
+
 
 int main(void)
 {
+	
+	
 	DDRE |= (1 << PINE4);
 	PORTE &= (~(1 << PINE4));
 	AX_UART_Init();
 	CAN_Init();
 	CAN_InitRxMob(LIFT_IDE);
+	
+	systemInit();
 	
 	_delay_ms(1000);
 
@@ -23,5 +30,7 @@ int main(void)
        CAN_read(&message);
 	   
 	   action(message);  
+	  
     }
+
 }

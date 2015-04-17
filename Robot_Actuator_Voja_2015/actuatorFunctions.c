@@ -5,6 +5,7 @@
 #include "control.h"
 #include "uart.h"
 #include "can.h"
+#include "system.h"
 
 #define ACTIVATE	1
 #define DEACTIVATE	-1
@@ -76,19 +77,17 @@ void leftDiafram(unsigned char state)
 
 void liftMove(unsigned char state)
 {
-	DDRF |= (1 << PINF7);//CS1
-	DDRF |= (1 << PINF6);//INA1
-	DDRF |= (0 << PINF5);//INB1
-	DDRE |= (1 << PINE3);//PWM1
+
+	GPIO_OutputSet(chipSelect);
+	GPIO_OutputSet(INA1);
+	GPIO_OutputSet(PWM);
 	
-	if (state == ACTIVATE)
+	if(state == ACTIVATE)
 	{
-		PORTE |= (1 << PINE3);
-	} 
-	else
+		GPIO_OutputReset(INB1);
+	}else
 	{
-		PORTE &= ~(1 << PINE3);
-		
+		GPIO_OutputReset(PWM);
 	}
 		
 }//END OF liftOnOff

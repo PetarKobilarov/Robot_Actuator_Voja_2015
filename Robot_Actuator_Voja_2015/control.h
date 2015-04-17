@@ -3,10 +3,10 @@
 #define CONTROL_H_
 #include "can.h"
 
-#define AX_SERVO1 1
-#define AX_SERVO2 2
-#define AX_SERVO3 3
-#define AX_SERVO4 4
+#define AX_SERVO1 0x01
+#define AX_SERVO2 0x02
+#define AX_SERVO3 0x03
+#define AX_SERVO4 0x04
 
 void TIMER3_Init(unsigned int f_pwm);
 void TIMER1_Init(void);

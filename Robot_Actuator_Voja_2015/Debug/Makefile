@@ -39,7 +39,8 @@ C_SRCS +=  \
 ../actuatorFunctions.c \
 ../can.c \
 ../control.c \
-../Robot_Actuator_Voja_2015.c
+../Robot_Actuator_Voja_2015.c \
+../system.c
 
 
 PREPROCESSING_SRCS += 
@@ -52,25 +53,29 @@ OBJS +=  \
 actuatorFunctions.o \
 can.o \
 control.o \
-Robot_Actuator_Voja_2015.o
+Robot_Actuator_Voja_2015.o \
+system.o
 
 OBJS_AS_ARGS +=  \
 actuatorFunctions.o \
 can.o \
 control.o \
-Robot_Actuator_Voja_2015.o
+Robot_Actuator_Voja_2015.o \
+system.o
 
 C_DEPS +=  \
 actuatorFunctions.d \
 can.d \
 control.d \
-Robot_Actuator_Voja_2015.d
+Robot_Actuator_Voja_2015.d \
+system.d
 
 C_DEPS_AS_ARGS +=  \
 actuatorFunctions.d \
 can.d \
 control.d \
-Robot_Actuator_Voja_2015.d
+Robot_Actuator_Voja_2015.d \
+system.d
 
 OUTPUT_FILE_PATH +=Robot_Actuator_Voja_2015.elf
 
@@ -94,10 +99,12 @@ C:/Users/pkobi_000/Desktop/Robotika2015/Kodovi/Robot_Actuator_Voja_2015/Robot_Ac
 
 
 
+
+
 ./%.o: .././%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 4.3.3
-	$(QUOTE)C:\WinAVR-20100110\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=11059200ULL  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=at90can128 -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\WinAVR-20100110\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=11059200ULL  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -Wall -pedantic -mmcu=at90can128 -c -std=gnu99 -v -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 

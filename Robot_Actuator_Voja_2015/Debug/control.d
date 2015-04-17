@@ -13,7 +13,7 @@ control.d control.o control.o: .././control.c \
   c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h \
   c:/winavr-20100110/lib/gcc/../../avr/include/avr/interrupt.h \
-  .././uart.h .././control.h .././can.h .././qei.h
+  .././uart.h .././control.h .././can.h .././qei.h .././system.h
 
 c:/winavr-20100110/lib/gcc/../../avr/include/avr/io.h:
 
@@ -50,3 +50,5 @@ c:/winavr-20100110/lib/gcc/../../avr/include/avr/interrupt.h:
 .././can.h:
 
 .././qei.h:
+
+.././system.h:

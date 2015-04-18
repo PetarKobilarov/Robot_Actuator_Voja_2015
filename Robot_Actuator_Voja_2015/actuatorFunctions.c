@@ -33,7 +33,7 @@ void colectThePopcorn(unsigned char side)
 {
 	if(side == 1)
 	{
-		AX_SetAngle(60, 180, 1, AX_SERVO2);//otvori ruku za uzimanje kokica sa desne strane
+		AX_SetAngle(220, 180, 1, AX_SERVO2);//otvori ruku za uzimanje kokica sa desne strane
 		_delay_ms(1000);
 		AX_SetAngle(160, 180, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane
 		_delay_ms(1000);	
@@ -49,28 +49,25 @@ void colectThePopcorn(unsigned char side)
 
 void rightDiafram(unsigned char state)
 {
-	DDRE |= (1 << PINE4);
 	
 	if (state == ACTIVATE)
 	{
-		PORTE |= (1 << PINE4);
+		GPIO_OutputSet(pinE5);
 	}else
 	{
-		PORTE &= ~(1 << PINE4);
+		GPIO_OutputReset(pinE5);
 	}
 	
 }//END OF valveOnOff
 
 void leftDiafram(unsigned char state)
-{
-	DDRE |= (1 << PINE5);
-	
+{	
 	if (state == ACTIVATE)
 	{
-		PORTE |= (1 << PINE5);
+		GPIO_OutputSet(pinE5);
 	}else
 	{
-		PORTE &= ~(1 << PINE5);
+		GPIO_OutputReset(pinE5);
 	}
 	
 }//END OF valveTwoOnOff
@@ -81,10 +78,11 @@ void liftMove(unsigned char state)
 	GPIO_OutputSet(chipSelect);
 	GPIO_OutputSet(INA1);
 	GPIO_OutputSet(PWM);
+	GPIO_OutputReset(INB1);
 	
 	if(state == ACTIVATE)
 	{
-		GPIO_OutputReset(INB1);
+		GPIO_OutputSet(PWM);
 	}else
 	{
 		GPIO_OutputReset(PWM);

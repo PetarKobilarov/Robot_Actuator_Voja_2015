@@ -11,10 +11,6 @@
 
 int main(void)
 {
-	
-	
-	DDRE |= (1 << PINE4);
-	PORTE &= (~(1 << PINE4));
 	AX_UART_Init();
 	CAN_Init();
 	CAN_InitRxMob(LIFT_IDE);
@@ -30,6 +26,7 @@ int main(void)
        CAN_read(&message);
 	   
 	   action(message);  
+	   message.data[0] = 0;
 	  
     }
 

@@ -23,7 +23,7 @@ void fillDebaunsingData(void);
 
 void Timer_Init(unsigned int freq);
 
-unsigned char chipSelect, PWM, INA1, INB1;
+unsigned char chipSelect, PWM, INA1, INB1, pinE4, pinE5;
 
 void systemInit(void);
 int jumperCheck(void);

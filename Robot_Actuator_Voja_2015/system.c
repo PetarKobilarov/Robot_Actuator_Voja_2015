@@ -141,15 +141,13 @@ ISR(TIMER1_COMPA_vect)
 
 void systemInit(void)
 {
-	CAN_Init(4);
-	
 	Timer_Init(1000);
 	
-	unsigned char chipSelect = GPIO_OutputRegister(GPIOF_BASE, 7);
-	unsigned char INA1 = GPIO_OutputRegister(GPIOF_BASE, 6);
-	unsigned char INB1 = GPIO_OutputRegister(GPIOF_BASE, 5);
-	unsigned char PWM = GPIO_OutputRegister(GPIOE_BASE, 3);
-	unsigned char PinF0 = GPIO_OutputRegister(GPIOF_BASE, 0);
+	chipSelect = GPIO_OutputRegister(GPIOF_BASE, 7);
+	INA1 = GPIO_OutputRegister(GPIOF_BASE, 6);
+	INB1 = GPIO_OutputRegister(GPIOF_BASE, 5);
+	PWM = GPIO_OutputRegister(GPIOE_BASE, 3);
+	pinE4 = GPIO_OutputRegister(GPIOE_BASE, 4);
+	pinE5 = GPIO_OutputRegister(GPIOE_BASE, 5);
 	
-	_delay_ms(1000);
 }

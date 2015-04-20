@@ -3,11 +3,11 @@
 
 #include "can.h"
 
-void knockDownTheClapperboards(unsigned char side);
-void colectThePopcorn(unsigned char side);
-void leftDiafram(unsigned char state);
-void rightDiafram(unsigned char state);
-void liftMove(unsigned char state);
+void knockDownTheClapperboards(signed char side);
+void colectThePopcorn(signed char side);
+void leftDiafram(signed char state);
+void rightDiafram(signed char state);
+void liftStates(signed char state);
 void action(canMsg msg);
 
 #endif

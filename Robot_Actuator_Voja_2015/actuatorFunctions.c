@@ -10,13 +10,13 @@
 #define ACTIVATE	1
 #define DEACTIVATE	-1
 
-void knockDownTheClapperboards(unsigned char side)
+void knockDownTheClapperboards(signed char side)
 {
 	if(side == 1)
 	{
-		AX_SetAngle(60, 180, 1, AX_SERVO1);//izbaci udaraljku sa desne strane
+		AX_SetAngle(60, 240, 1, AX_SERVO1);//izbaci udaraljku sa desne strane
 			_delay_ms(1000);
-		AX_SetAngle(160, 180, 1, AX_SERVO1);//uvuce udaraljku sa desne strane
+		AX_SetAngle(160, 240, 1, AX_SERVO1);//uvuce udaraljku sa desne strane
 			_delay_ms(1000);
 		
 	}else
@@ -29,50 +29,53 @@ void knockDownTheClapperboards(unsigned char side)
 	}
 }//END OF knockDownTheClapperboards
 
-void colectThePopcorn(unsigned char side)
+void colectThePopcorn(signed char side)
 {
 	if(side == 1)
 	{
-		AX_SetAngle(220, 180, 1, AX_SERVO2);//otvori ruku za uzimanje kokica sa desne strane
+		AX_SetAngle(300, 240, 1, AX_SERVO2);//otvori ruku za uzimanje kokica sa desne strane
 		_delay_ms(1000);
-		AX_SetAngle(160, 180, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane
+		AX_SetAngle(280, 240, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane
 		_delay_ms(1000);	
 		
 	}else
 	{
-		AX_SetAngle(60, 180, 1, AX_SERVO4);//otvori ruku za uzimanje kokica sa leve strane
+		AX_SetAngle(50, 240, 1, AX_SERVO4);//otvori ruku za uzimanje kokica sa leve strane
 		_delay_ms(1000);
-		AX_SetAngle(160, 180, 1, AX_SERVO4);//zatvori ruku za uzimanje kokica sa leve strane
+		AX_SetAngle(90, 240, 1, AX_SERVO4);//zatvori ruku za uzimanje kokica sa leve strane
 		_delay_ms(1000);
 	}
 }//END OF colectThePopcorn
 
-void rightDiafram(unsigned char state)
+void rightDiafram(signed char state)
 {
+	DDRE |= (1 << PINE4);
 	
-	if (state == ACTIVATE)
+	if(state == ACTIVATE)
 	{
-		GPIO_OutputSet(pinE5);
+		PORTE |= (1 << PINE4);
 	}else
 	{
-		GPIO_OutputReset(pinE5);
+		PORTE &= ~(1 << PINE4);
 	}
 	
-}//END OF valveOnOff
+}//END OF rightDiafram
 
-void leftDiafram(unsigned char state)
+void leftDiafram(signed char state)
 {	
-	if (state == ACTIVATE)
+	DDRE |= (1 << PINE5);
+	
+	if(state == ACTIVATE)
 	{
-		GPIO_OutputSet(pinE5);
+		PORTE |= (1 << PINE5);
 	}else
 	{
-		GPIO_OutputReset(pinE5);
+		PORTE &= ~(1 << PINE5);
 	}
-	
-}//END OF valveTwoOnOff
 
-void liftMove(unsigned char state)
+}//END OF leftDiafram
+
+void liftStates(signed char state)
 {
 
 	GPIO_OutputSet(chipSelect);
@@ -88,7 +91,7 @@ void liftMove(unsigned char state)
 		GPIO_OutputReset(PWM);
 	}
 		
-}//END OF liftOnOff
+}//END OF liftMove
 
 void action(canMsg msg)
 {
@@ -119,7 +122,7 @@ void action(canMsg msg)
 				
 		case 'E':
 			state = msg.data[1];
-			liftMove(state);
+			liftStates(state);
 				break;
 	}
 }

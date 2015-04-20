@@ -10,41 +10,52 @@
 #define ACTIVATE	1
 #define DEACTIVATE	-1
 
-void knockDownTheClapperboards(signed char side)
+void knockDownTheClapperboards(signed char side, signed char state)
 {
-	if(side == 1)
+	if(state == ACTIVATE)
 	{
-		AX_SetAngle(60, 240, 1, AX_SERVO1);//izbaci udaraljku sa desne strane
-			_delay_ms(1000);
-		AX_SetAngle(160, 240, 1, AX_SERVO1);//uvuce udaraljku sa desne strane
-			_delay_ms(1000);
-		
+		if(side == 1)
+		{
+			AX_SetAngle(60, 240, 1, AX_SERVO1);//izbaci udaraljku sa desne strane
+		}else
+		{
+			AX_SetAngle(160, 180, 1, AX_SERVO3);//izbaci udaraljku sa leve strane
+		}
 	}else
 	{
-		AX_SetAngle(160, 180, 1, AX_SERVO3);//izbaci udaraljku sa leve strane
-			_delay_ms(1000);
-		AX_SetAngle(60, 180, 1, AX_SERVO3);//uvuce udaraljku sa leve strane
-			_delay_ms(1000);
-		
+		if(side == 1)
+		{
+			AX_SetAngle(160, 240, 1, AX_SERVO1);//uvuce udaraljku sa desne strane
+		}else
+		{
+			AX_SetAngle(60, 180, 1, AX_SERVO3);//uvuce udaraljku sa leve strane
+		}
 	}
+	
 }//END OF knockDownTheClapperboards
 
-void colectThePopcorn(signed char side)
+void colectThePopcorn(signed char side, signed char state)
 {
-	if(side == 1)
+	if(state == ACTIVATE)
 	{
-		AX_SetAngle(300, 240, 1, AX_SERVO2);//otvori ruku za uzimanje kokica sa desne strane
-		_delay_ms(1000);
-		AX_SetAngle(280, 240, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane
-		_delay_ms(1000);	
-		
+		if(side == 1)
+		{
+			AX_SetAngle(320, 240, 1, AX_SERVO2);//otvori ruku za uzimanje kokica sa desne strane	
+		}else
+		{
+			AX_SetAngle(50, 240, 1, AX_SERVO4);//otvori ruku za uzimanje kokica sa leve strane
+		}
 	}else
 	{
-		AX_SetAngle(50, 240, 1, AX_SERVO4);//otvori ruku za uzimanje kokica sa leve strane
-		_delay_ms(1000);
-		AX_SetAngle(90, 240, 1, AX_SERVO4);//zatvori ruku za uzimanje kokica sa leve strane
-		_delay_ms(1000);
+		if(side == 1)
+		{
+			AX_SetAngle(280, 240, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane
+		}else
+		{
+			AX_SetAngle(90, 240, 1, AX_SERVO4);//zatvori ruku za uzimanje kokica sa leve strane
+		}
 	}
+
 }//END OF colectThePopcorn
 
 void rightDiafram(signed char state)
@@ -102,12 +113,14 @@ void action(canMsg msg)
 	{
 		case 'A':
 			side = msg.data[1];
-			knockDownTheClapperboards(side);
+			state = msg.data[2];
+			knockDownTheClapperboards(side, state);
 				break;
 				
 		case 'B':
 			side = msg.data[1];
-			colectThePopcorn(side);
+			state = msg.data[2];
+			colectThePopcorn(side, state);
 				break;
 				
 		case 'C':

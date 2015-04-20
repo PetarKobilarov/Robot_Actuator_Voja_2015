@@ -3,8 +3,8 @@
 
 #include "can.h"
 
-void knockDownTheClapperboards(signed char side);
-void colectThePopcorn(signed char side);
+void knockDownTheClapperboards(signed char side, signed char state);
+void colectThePopcorn(signed char side, signed char state);
 void leftDiafram(signed char state);
 void rightDiafram(signed char state);
 void liftStates(signed char state);

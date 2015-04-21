@@ -9,6 +9,7 @@
 
 #define ACTIVATE	1
 #define DEACTIVATE	-1
+#define CLOSE		2
 
 void knockDownTheClapperboards(signed char side, signed char state)
 {
@@ -40,20 +41,31 @@ void colectThePopcorn(signed char side, signed char state)
 	{
 		if(side == 1)
 		{
-			AX_SetAngle(320, 240, 1, AX_SERVO2);//otvori ruku za uzimanje kokica sa desne strane	
+			AX_SetAngle(300, 240, 1, AX_SERVO2);//otvori ruku za uzimanje kokica sa desne strane
 		}else
 		{
-			AX_SetAngle(50, 240, 1, AX_SERVO4);//otvori ruku za uzimanje kokica sa leve strane
+			AX_SetAngle(80, 240, 1, AX_SERVO4);//otvori ruku za uzimanje kokica sa leve strane
 		}
-	}else
+	}else if(state == DEACTIVATE)
 	{
 		if(side == 1)
 		{
 			AX_SetAngle(280, 240, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane
 		}else
 		{
-			AX_SetAngle(90, 240, 1, AX_SERVO4);//zatvori ruku za uzimanje kokica sa leve strane
+			AX_SetAngle(110, 240, 1, AX_SERVO4);//zatvori ruku za uzimanje kokica sa leve strane
 		}
+	}else if(state == CLOSE)
+	{
+		if(side == 1)
+		{
+			AX_SetAngle(160, 240, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane do kraja
+			
+		}else
+		{
+			AX_SetAngle(120, 240, 1, AX_SERVO4);//zatvori ruku za uzimanje kokica sa leve strane do kraja
+		}
+		
 	}
 
 }//END OF colectThePopcorn
@@ -73,7 +85,7 @@ void rightDiafram(signed char state)
 }//END OF rightDiafram
 
 void leftDiafram(signed char state)
-{	
+{
 	DDRE |= (1 << PINE5);
 	
 	if(state == ACTIVATE)
@@ -101,7 +113,7 @@ void liftStates(signed char state)
 	{
 		GPIO_OutputReset(PWM);
 	}
-		
+	
 }//END OF liftMove
 
 void action(canMsg msg)
@@ -112,30 +124,30 @@ void action(canMsg msg)
 	switch(command)
 	{
 		case 'A':
-			side = msg.data[1];
-			state = msg.data[2];
-			knockDownTheClapperboards(side, state);
-				break;
-				
+		side = msg.data[1];
+		state = msg.data[2];
+		knockDownTheClapperboards(side, state);
+		break;
+		
 		case 'B':
-			side = msg.data[1];
-			state = msg.data[2];
-			colectThePopcorn(side, state);
-				break;
-				
+		side = msg.data[1];
+		state = msg.data[2];
+		colectThePopcorn(side, state);
+		break;
+		
 		case 'C':
-			state = msg.data[1];
-			leftDiafram(state);
-				break;
-				
+		state = msg.data[1];
+		leftDiafram(state);
+		break;
+		
 		case 'D':
-			state = msg.data[1];
-			rightDiafram(state);
-				break;
-				
+		state = msg.data[1];
+		rightDiafram(state);
+		break;
+		
 		case 'E':
-			state = msg.data[1];
-			liftStates(state);
-				break;
+		state = msg.data[1];
+		liftStates(state);
+		break;
 	}
 }

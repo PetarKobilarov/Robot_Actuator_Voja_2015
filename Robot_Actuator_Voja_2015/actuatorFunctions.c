@@ -44,7 +44,7 @@ void colectThePopcorn(signed char side, signed char state)
 			AX_SetAngle(300, 240, 1, AX_SERVO2);//otvori ruku za uzimanje kokica sa desne strane
 		}else
 		{
-			AX_SetAngle(80, 240, 1, AX_SERVO4);//otvori ruku za uzimanje kokica sa leve strane
+			AX_SetAngle(60, 240, 1, AX_SERVO4);//otvori ruku za uzimanje kokica sa leve strane
 		}
 	}else if(state == DEACTIVATE)
 	{
@@ -53,13 +53,13 @@ void colectThePopcorn(signed char side, signed char state)
 			AX_SetAngle(280, 240, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane
 		}else
 		{
-			AX_SetAngle(110, 240, 1, AX_SERVO4);//zatvori ruku za uzimanje kokica sa leve strane
+			AX_SetAngle(100, 240, 1, AX_SERVO4);//zatvori ruku za uzimanje kokica sa leve strane
 		}
 	}else if(state == CLOSE)
 	{
 		if(side == 1)
 		{
-			AX_SetAngle(160, 240, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane do kraja
+			AX_SetAngle(240, 240, 1, AX_SERVO2);//zatvori ruku za uzimanje kokica sa desne strane do kraja
 			
 		}else
 		{
